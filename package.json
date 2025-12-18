@@ -1,0 +1,48 @@
+{
+  "name": "gmail-electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "A simple Gmail desktop app built with Electron",
+  "author": "Jack Berger",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac --arm64",
+    "build:win": "electron-builder --win --x64 --arm64",
+    "build:all": "electron-builder --mac --arm64 --win --x64 --arm64"
+  },
+  "build": {
+    "appId": "com.gmail.electron",
+    "productName": "Gmail",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "identity": null,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["arm64"]
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "arm64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12"
+  }
+}
